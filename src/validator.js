@@ -1,4 +1,6 @@
 import StringType from './schemas/types/string.js';
+import NumberType from './schemas/types/number.js';
+import ArrayType from './schemas/types/array.js';
 
 export default class Validator {
   constructor(type, customValidators = {}) {
@@ -8,6 +10,16 @@ export default class Validator {
 
   string() {
     this.type = new StringType(this.customValidators.string ?? {});
+    return this.type;
+  }
+
+  number() {
+    this.type = new NumberType(this.customValidators.string ?? {});
+    return this.type;
+  }
+
+  array() {
+    this.type = new ArrayType(this.customValidators.array ?? {});
     return this.type;
   }
 }
