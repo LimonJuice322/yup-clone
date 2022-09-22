@@ -22,4 +22,10 @@ export default class Schema {
   addMethod(methodName, method, ...args) {
     this.currentRules[methodName] = [method, ...args];
   }
+
+  test(method, ...args) {
+    const customMethod = this.customRules[method];
+    this.addMethod(method, customMethod, args);
+    return this;
+  }
 }
